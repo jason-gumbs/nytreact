@@ -1,0 +1,19 @@
+const router = require("express").Router();
+const axios = require("axios");
+const articleController = require("../../controllers/articleController");
+
+
+
+// Matches with "/api/books"
+router.route("/")
+.get(articleController.findAll)
+.post(articleController.create);
+ 
+// Matches with "/api/books/:id"
+router
+  .route("/:id")
+  // .post(articleController.findBySearch)
+  .put(articleController.update)
+  .delete(articleController.remove);
+
+module.exports = router;
